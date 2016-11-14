@@ -263,6 +263,7 @@ func ValidateHeader(config *params.ChainConfig, pow pow.PoW, header *types.Heade
 // the difficulty that a new block should have when created at time
 // given the parent block's time and difficulty.
 func CalcDifficulty(config *params.ChainConfig, time, parentTime uint64, parentNumber, parentDiff *big.Int) *big.Int {
+	return big.NewInt(0).Set(params.GenesisDifficulty)
 	if config.IsHomestead(new(big.Int).Add(parentNumber, common.Big1)) {
 		return calcDifficultyHomestead(time, parentTime, parentNumber, parentDiff)
 	} else {
